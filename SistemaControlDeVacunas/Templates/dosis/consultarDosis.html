@@ -1,0 +1,59 @@
+{% extends '../main.html' %}
+
+{% block head %}
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+  
+  
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+  
+
+  <script type="text/javascript" class="init">
+  $(document).ready(function() {
+      $('#data').DataTable({
+          responsive: true,
+          autoWidth: false
+      });
+  } );
+  
+  </script>
+{% endblock %}
+
+{% block content %} 
+<div class="contenido">
+    <h1 class="logo"><b>CONSULTAR LISTADO DE DOSIS</b></h1><br><br>
+    <div class="mainAgregar">
+        <a href="{% url 'AgregarDosis' %}" class="btn btn-info"> <b><i class="fas fa-plus-square"></i>  Agregar Nº de dosis</b></a>
+      </div>
+    <!--CONSULTAS TABLA-->
+   <div id="mostrar_tabla">
+    <table id="data" class="table table-striped table-bordered dt-responsive nowrap" style="margin: 0 auto; width:50%">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 50%;">Dosis</th>
+                <th scope="col" style="width: 50%;">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if object_list %}
+            {% for dosis in object_list%}
+            <tr>
+                <td>{{dosis.numero_dosis}}</td>
+                <td>
+                    <a href="{% url 'EliminarDosis' dosis.numero_dosis %}" class="btn btn-danger" ><b><i class="fas fa-trash-alt"></i></b>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <div class="alert alert-warning"><strong><i class="fas fa-exclamation-triangle"></i> No hay listados de dosis ingresadas en el sistema</strong></div>
+            {% endif %}
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,51 @@
+{% extends '../main.html' %}
+
+
+{% block content %} 
+
+
+<div class="content">
+    <h1 class="logo"><b>MODIFICAR TIPO DE VACUNA</b></h1><br><br>
+
+    <div class="contact-wrapper">
+       
+        <div class="contact-form">
+            <form method='POST' action="">
+                {% csrf_token %}
+                <p>
+                    <label for="{{form.nombre_vacuna.name}}">{{form.nombre_vacuna.label}}</label>
+                     {{form.nombre_vacuna}}
+                </p>
+                <p>
+                    <label for="{{form.fabricante.name}}">{{form.fabricante.label}}</label>
+                    {{form.fabricante}}
+                </p>
+                <p>
+                    <label for="{{form.pais_fabricacion.name}}">{{form.pais_fabricacion.label}}</label>
+                    {{form.pais_fabricacion}}
+                </p>
+                <p>
+                    {% if messages %}
+                    <div>
+                        <ul class="messages">
+                            <div class="alert alert-danger">
+                                {% for message in messages %}
+                                <i class="fas fa-exclamation">  {{ message }}</i>
+                                {% endfor %}
+                            </div>
+                        </ul>  
+                    </div>  
+                    {% endif %}
+                <div class="block">
+                    <button type="submit">Modificar</button>  <button type="button"><a href="http://127.0.0.1:8000/consultarVacuna/">Cancelar</a></button>
+                </div >
+
+            </form>
+        </div>
+
+    </div>
+    
+</div>
+{% endblock content %}
+
+

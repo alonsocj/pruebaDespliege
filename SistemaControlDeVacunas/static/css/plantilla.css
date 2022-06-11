@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: none;
+    color: black;
+    font-family: 'Quicksand',sans-serif;
+    padding: 0 1.0em;
+}
+
+.content{
+    max-width:1170;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+}
+
+.logo{
+    color: #141E30;
+    text-align: center;
+    font-size: 3em;
+}
+.contact-wrapper{
+
+    border-radius: 15px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.562);
+}
+.contact-wrapper > *{
+    padding: 1.5em;
+}
+.contact-form{
+    border-radius: 15px;
+    background: none;
+    font-size: 20px;
+    align-items: center;
+}
+.contact-form form{
+    display: grid;
+    grid-template-columns: 1fr;
+    
+}
+.contact-form form .block{
+    grid-column: 1/1;
+
+}
+.contact-form form p{ 
+    margin: 0;
+    padding: 1em;
+}
+.contact-form form button, .contact-form form input{
+    width: 100%;
+    padding: .1em;
+    border: none;
+    background: none;
+    outline: none;
+    color: black;
+    border-bottom: 1px solid #012d80;
+    font-size: 20px;
+}
+.contact-form form button{ 
+background: #141E30;
+border:none;
+padding: 0.5em;
+border-radius: 30px;
+color: aliceblue;
+text-decoration: none;
+width: 30%;
+}
+.contact-form form button a{ 
+    
+    color: aliceblue;
+    text-decoration: none;
+    width: 30%;
+    }
+.contact-form form button:hover, .contact-form form button:focus{
+    background: #79869b;
+    color: black;
+    transition: background-color 0.5s ease-out;
+    outline: 0;
+}
+.contact-form form button a:hover, .contact-form form button a:focus{
+    
+    color: black;
+}
+.content .contact-wrapper .contact-form .most #data th,td{
+    font-size:11px;
+}
+
+.log a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.contenido .logo{
+    font-family: 'Quicksand',sans-serif;
+    text-align: center;
+    color: #141E30;
+    font-size: 3em;
+    
+}
+
+.alert {
+    width: 90%; 
+    margin: 0 auto;
+    height: 20;
+}
+
+.cont{
+    padding: 10em 5em;
+}
+
+.contenido .mainAgregar{
+    padding: 0em 0em 3em 0em;
+    margin-right: 0em;
+    width: 100%;
+   display:flex;
+}
+.contenido .mainAgregar .btn{
+    background-color: #1e3e7a;
+    border: #1e3e7a;
+    color: aliceblue;
+    justify-content: right;
+    display: flex;
+    text-decoration: none;
+
+}
+.contenido .mainAgregar .btn:hover{
+    
+    background-color: #00205c;
+    border: #00205c;
+    color: aliceblue;
+    transition: background-color 0.4s ease-out;
+
+}
+
+@media ( min-width:801px){
+    body{
+        padding: 0 0rem;
+    }
+    .content{
+        padding: 0 30rem;
+    }
+    .contenido{
+        padding: 0 5rem;
+    }
+}
+
+

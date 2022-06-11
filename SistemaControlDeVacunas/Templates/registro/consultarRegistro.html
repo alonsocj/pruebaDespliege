@@ -1,0 +1,67 @@
+{% extends '../main.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+  
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript" class="init">
+  $(document).ready(function() {
+      $('#data').DataTable({
+          responsive: true,
+          autoWidth: false
+      });
+});  
+</script>
+{% endblock %}
+
+  {% block content %}
+  <div class="contenido">
+    <h1 class="logo"><b>CONSULTAR REGISTRO DE VACUNACIONES</b></h1><br><br>
+    <div class="mainAgregar">
+      <a href="{% url 'IngresarDui' %}" class="btn btn-info"> <b><i class="fas fa-plus-square"></i>  Agregar registro de vacunación</b></a>
+    </div>
+          <!--CONSULTAS TABLA-->
+   <div id="mostrar_tabla">
+    <table id="data" class="table table-striped table-bordered dt-responsive nowrap" style="margin: 0 auto; width:50%">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 60%;">Dosis</th>
+                <th scope="col" style="width: 60%;">Dui</th>
+                <th scope="col" style="width: 50%;">Vacuna</th>
+                <th scope="col" style="width: 10%;">Fecha de Vacunacion</th>
+                <th scope="col" style="width: 20%;">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% if object_list %}
+            {% for registro in object_list %}
+            <tr>
+                <td>{{registro.numero_dosis}}</td>
+                <td>{{registro.dui}}</td>
+                <td>{{registro.nombre_vacuna}}</td>
+                <td>{{registro.fecha_vacunacion}}</td>
+                <td>
+                    <a
+                      href="{% url 'ModificarRegistro' registro.id_registro %}" class="btn btn-warning"> <b><i class="fas fa-edit"></b></i>
+                    </a>
+                    <a
+                      href="{% url 'EliminarRegistro' registro.id_registro %}" class="btn btn-danger" ><b><i class="fas fa-trash-alt"></b></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <div class="alert alert-warning"><strong><i class="fas fa-exclamation-triangle"></i> No hay listados de registros de vacunaciones ingresadas en el sistema</strong></div>
+            {% endif %}
+        </tbody>
+    </table>
+    
+  </div>
+</div>
+{% endblock content %}
+
+

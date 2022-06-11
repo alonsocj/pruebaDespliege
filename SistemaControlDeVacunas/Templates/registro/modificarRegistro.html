@@ -1,0 +1,53 @@
+{% extends '../main.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %} 
+<div class="content">
+    <h1 class="logo"><b>MODIFICAR REGISTRO DE VACUNACIONES</b></h1><br><br>
+    <div class="contact-wrapper">
+        <div class="contact-form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <p>
+                    <label for="{{form.dui.name}}">{{form.dui.label}}</label>
+                    {{form.dui}}
+                </p>
+                <p>
+                    <label for="{{form.numero_dosis.name}}">{{form.numero_dosis.label}}</label>
+                    {{form.numero_dosis}}
+                </p>
+                <p>
+                    <label for="{{form2.nombre_vacuna.name}}">{{form.nombre_vacuna.label}}</label>
+                    {{form.nombre_vacuna}}
+                </p>
+                <p>
+                    <label for="{{form.fecha_vacunacion.name}}">{{form.fecha_vacunacion.label}}</label>
+                    {{form.fecha_vacunacion}}
+                </p>
+                {% if messages %}
+                <div>
+                    <ul class="messages">
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                            <i class="fas fa-exclamation">  {{ message }}</i>
+                            {% endfor %}
+                        </div>
+                    </ul>  
+                </div>  
+                {% endif %}
+                <div class="block">
+                    <button class = "btn btn-primary" type="submit">Modificar</button> 
+                    <button type="button"><a href="{% url 'ConsultarRegistro' %}">Cancelar</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{% endblock %}

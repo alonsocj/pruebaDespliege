@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static%}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'css/styleLogin.css'%}">
+    <script src="https://kit.fontawesome.com/f9e5d5f13a.js" crossorigin="anonymous"></script>
+
+        <div class="container-fluid">
+            <a href="http://127.0.0.1:8000" class ="boton"> <i class="fas fa-home"></i></a>
+        </div>
+    
+</head>
+<body>
+    <div class="login-contain">
+        <img src="{% static 'img/user.jpeg'%}" alt="">
+        <p>INICIAR SESION<br></p>
+        <div class="fields">
+            <div class="mensajes">
+                {% if form.errors %}
+                <div class="alert alert-danger"><p> <i class="fas fa-exclamation"></i>  Tu usuario y contraseña no coinciden. Por favor intenta otra vez.</p></div>
+                {% endif %}
+            </div>
+
+            <form class="form-login" id="form-login" method="POST" action="">
+                {% csrf_token %}
+                <div class="data" id="username">
+                    <i class="fas fa-user-shield"></i>{{form.username}}
+                </div>
+                <div  class="data" id="password"> 
+                    <i class="fas fa-lock"></i>{{form.password}}
+                </div>
+                <button class="btn-login" id="btn-registrar"> Iniciar Sesión</button>
+                
+            </form>
+
+        
+    </div>
+
+
+
+</body>
+</html>

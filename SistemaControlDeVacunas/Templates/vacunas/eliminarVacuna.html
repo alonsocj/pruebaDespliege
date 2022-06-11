@@ -1,0 +1,47 @@
+{% extends '../main.html' %}
+
+
+
+{% block content %}
+<div class="content">
+    <h1 class="logo"><b>ELIMINAR TIPO DE VACUNA</b></h1><br><br>
+
+    <div class="contact-wrapper">
+       
+        <div class="contact-form">
+            <form method='POST' action="">
+                {% csrf_token %}
+                <h3>¿Desea eliminar la siguiente vacuna?</h3>
+                <p>
+                   Nombre de vacuna: {{object.nombre_vacuna}}
+                </p>
+                <p>
+                   Nombre del fabricante: {{object.fabricante}}
+                </p>
+                <p>
+                    Pais de fabricación: {{object.pais_fabricacion}}
+                </p>
+                {% if messages %}
+                <div>
+                    <ul class="messages">
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+
+                            <i class="fas fa-exclamation">  {{ message }}</i>
+                            {% endfor %}
+                        </div>
+                    </ul>  
+                </div>  
+                {% endif %}
+                <div class="block">
+                    <button type="submit">Eliminar</button> <button type="button"><a href="{% url 'ConsultarVacuna' %}">Cancelar</a></button>
+                </div >
+
+            </form>
+        </div>
+
+    </div>
+    
+</div>
+{% endblock content %}
+

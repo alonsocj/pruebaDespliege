@@ -1,0 +1,45 @@
+{% extends '../main.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="cont">
+
+<div class="content">
+    <h1 class="logo"><b>INGRESE SU DUI</b></h1><br><br>
+    <div class="contact-wrapper">
+        <div class="contact-form">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <p>
+                    <label for="{{form.dui.name}}">{{form.dui.label}}</label>
+                    {{form.dui}}
+                </p>
+                {% if messages %}
+                <div>
+                    <ul class="messages">
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                            <i class="fas fa-exclamation">  {{ message }}</i>
+                            {% endfor %}
+                        </div>
+                    </ul>  
+                </div>  
+                {% endif %}
+                <div class="block">
+                    <button class = "btn btn-primary" type="submit">Ingresar</button> 
+                    <button type="button"><a href="{% url 'ConsultarRegistro' %}">Cancelar</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+{% endblock %}

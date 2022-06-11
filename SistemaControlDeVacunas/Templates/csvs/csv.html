@@ -1,0 +1,80 @@
+{% extends '../main.html' %} {% block head %} {% endblock %} {% block content %}
+
+{% load static%}
+<header>
+    <style>
+        .alert{
+            background-color: rgb(235, 215, 253);
+            border:rgb(235, 215, 253);
+            color: rgb(97, 11, 179);
+        }
+    </style>
+</header>
+    <div class="content">
+        <h1 class="logo"><b>IMPORTAR DATOS</b></h1><br><br>
+
+        <div class="contact-wrapper">
+            
+            <div class="contact-form">
+
+                <p>Seleccione el archivo que desea subir al sistema con el siguiente formato:</p>
+                <div class="most">
+                    <table id="data" class="table table-striped table-bordered dt-responsive nowrap" style="margin: 0 auto; width:50%">
+                        <thead>
+                            <tr>
+                                <th scope="col" >DUI</th>
+                                <th scope="col" >ID_MUNICIPIO</th>
+                                <th scope="col" >NOMBRE</th>
+                                <th scope="col" >APELLIDO</th>
+                                <th scope="col" >SEXO</th>
+                                <th scope="col">EDAD</th>
+                                <th scope="col" >NOMBRE_VACUNA</th>
+                                <th scope="col" >NUMERO_DOSIS</th>
+                                <th scope="col" >FECHA_VACUNACION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Varchar</td>
+                                <td>Integer</td>
+                                <td>Varchar</td>
+                                <td>Varchar</td>
+                                <td>Char</td>
+                                <td>Integer</td>
+                                <td>Varchar</td>
+                                <td>Integer</td>
+                                <td>Date: año-mes-día</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                <br>
+                <form method='POST' action="" class="form" enctype="multipart/form-data">
+                    {% csrf_token %} {{form}}
+                    <br>
+                    <div class="block">
+                        <button type="submit" class="btn btn-dark">Confirmar</button>
+                    </div >
+                    <br>
+                    {% if messages %}
+                    <div>
+                        <ul class="messages">
+                            <div class="alert alert-info">
+                                {% for message in messages %}
+                                <div>
+                                    <i class="fas fa-info-circle"></i>  {{ message }}
+                                  </div>
+                            <br>
+                                {% endfor %}
+                            </div>
+                        </ul>  
+                    </div>  
+                    {% endif %} 
+                    
+                </form>
+            </div>
+        </div>
+        <br>
+    </div>
+{% endblock content %} {% block scripts %} {% endblock %}
+

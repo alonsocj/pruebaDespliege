@@ -1,0 +1,94 @@
+{% extends '../main.html' %}
+{% load static %}
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <h1 class="logo"><b>AGREGAR PERSONA</b></h1>
+
+    <div class="contact-wrapper">
+    
+        <div class="contact-form">
+            <form method='POST' action="">
+                {% csrf_token %}
+                <p>
+                    <label for="{{form.dui.name}}">{{form.dui.label}}</label>
+                    {{form.dui}}
+                </p>
+                <p>
+                    <label for="{{form.nombre.name}}">{{form.nombre.label}}</label>
+                    {{form.nombre}}
+                </p>
+                <p>
+                    <label for="{{form.apellido.name}}">{{form.apellido.label}}</label>
+                    {{form.apellido}}
+
+                </p>
+                <p>
+                    <label for="{{form.edad.name}}">{{form.edad.label}}</label>
+                    {{form.edad}}
+                </p>
+                <p>
+                    <label for="{{form.sexo.name}}">{{form.sexo.label}}</label>
+                    {{form.sexo}}
+                </p>
+                <p>
+                    <label >Departamento</label>
+                    <select name= "Departamento" id="id_departamento" class="form-control form-control-sn" required = "True">
+                        <option value="0">-----------</option>
+                        {% for dep in departamentos %}
+                        <option value="{{dep.id_departamento}}">{{dep.nombre_departamento}}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+                <p>
+                    <label >Municipio</label>
+                        <select name= "id_municipio" id="id_municipio" class="form-control form-control-sn" required = "True">
+                        <option value="0">-----------</option>
+                        {% for mun in municipios %}
+                        <option value="{{mun.id_municipio}}" data-chained="{{mun.id_departamento.id_departamento}}">{{mun.nombre_municipio}}</option>
+                        {% endfor %}
+                    </select>
+
+                </p>
+                
+                {% if messages %}
+                <div>
+                    <ul class="messages">
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                            <i class="fas fa-exclamation">  {{ message }}</i>
+                            {% endfor %}
+                        </div>
+                    </ul>  
+                </div>  
+                {% endif %}
+                <div class="block">
+                    <button type="submit">Agregar</button>  <button type="button"><a href="{% url 'ConsultarPersona' %}">Cancelar</a></button>
+                </div >
+
+            </form>
+        </div>
+
+    </div>
+
+    <br>
+
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script src="{% static 'js/jquery.chained.min.js'%}"></script>
+<script>
+    $(function(){
+        $("#id_municipio").chainedTo("#id_departamento");
+    });
+</script>
+{% endblock %}

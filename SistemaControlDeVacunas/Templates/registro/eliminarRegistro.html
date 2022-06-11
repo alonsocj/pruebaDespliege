@@ -1,0 +1,49 @@
+{% extends '../main.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1 class="logo"><b> REGISTRO DE VACUNACIONES</b></h1><br><br>
+    <div class="contact-wrapper">
+        <div class="contact-form">
+            <form method="post">
+                {% csrf_token %}
+                <h3>¿Desea eliminar el registro del sistema?</h3>
+                <p>
+                        Dui: {{object.dui}}
+                </p>
+                <p>
+                        Dosis: {{object.numero_dosis}}
+                </p>
+                <p>
+                        Vacuna: {{object.nombre_vacuna}}
+                </p>
+                <p>
+                        Fecha de Vacunación: {{object.fecha_vacunacion}}
+                </p>
+                {% if messages %}
+                <div>
+                    <ul class="messages">
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                            <i class="fas fa-exclamation">  {{ message }}</i>
+                            {% endfor %}
+                        </div>
+                    </ul>  
+                </div>  
+                {% endif %}
+                <div class="block">
+                    <button class = "btn btn-primary" type="submit">Eliminar</button> 
+                    <button type="button"><a href="{% url 'ConsultarRegistro' %}">Cancelar</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock %}

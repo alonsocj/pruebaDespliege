@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-inverse">
+    
+  <ul class="nav navbar-nav">
+
+    <li class="active"><a href="http://127.0.0.1:8000">Home</a></li>
+    {% if user.is_authenticated %}
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Personas<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://127.0.0.1:8000/consultarpersona/">Consultar Persona</a></li>
+        <li><a href="http://127.0.0.1:8000/registrarpersona/">Agregar Persona</a></li>
+      </ul>
+    </li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Vacunas<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://127.0.0.1:8000/consultarVacuna/">Consultar tipo de vacunas</a></li>
+        <li><a href="http://127.0.0.1:8000/agregarVacuna/">Agregar tipo de vacuna</a></li>
+      </ul>
+    </li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Nº de Dosis<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://127.0.0.1:8000/consultardosis/">Consultar listado de dosis</a></li>
+        <li><a href="http://127.0.0.1:8000/agregardosis/">Agregar número de dosis</a></li>
+      </ul>
+    </li>
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Registros de vacunaciones<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="http://127.0.0.1:8000/consultarregistro/">Consultar registro de vacunaciones</a></li>
+        <li><a href="http://127.0.0.1:8000/ingresardui/">Agregar registro de vacunación</a></li>
+      </ul>
+    </li>
+
+      <li><a href="http://127.0.0.1:8000/import/csv/">Importar datos</a></li>
+
+    {% endif %}
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+         {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a>
+      </li>
+      <li>
+        <a href=""><span class="glyphicon glyphicon-user"></span> {{user.username}}</a>
+      </li>
+      {% endif %}
+  </ul>
+</div>
+</nav>
+

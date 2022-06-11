@@ -1,0 +1,45 @@
+{% extends '../main.html' %}
+
+
+
+{% block content %}
+<div class="cont">
+    <div class="content">
+        <h1 class="logo"><b>ELIMINAR NÚMERO DE DOSIS</b></h1><br><br>
+
+        <div class="contact-wrapper">
+        
+            <div class="contact-form">
+                <form method='POST' action="">
+                    {% csrf_token %}
+                    <h3>¿Desea eliminar el siguiente número de dosis?</h3>
+                    <p>
+                        Número de dosis: {{object.numero_dosis}}
+                    </p>
+                    
+                    {% if messages %}
+                <div>
+                    <ul class="messages">
+                        <div class="alert alert-danger">
+                            {% for message in messages %}
+                            <i class="fas fa-exclamation">  {{ message }}</i>
+                            {% endfor %}
+                        </div>
+                    </ul>  
+                </div>  
+                {% endif %}
+                    <div class="block">
+                        <button type="submit">Eliminar</button>  <button type="button"><a href="http://127.0.0.1:8000/consultardosis/">Cancelar</a></button>
+                    </div >
+
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}
+
+
+
